@@ -1,4 +1,4 @@
-#include "Animal.h"
+#include "AAnimal.h"
 #include "Cat.h"
 #include "Dog.h"
 #include "Brain.h"
@@ -8,9 +8,9 @@
 
 void	Subject()
 {
-	int size = 10;
+	int size = 4;
 
-	Animal *animals[size];
+	AAnimal *animals[size];
 
 	std::cout << "\n\033[36m  create and fill an array of Animal objects  \033[0m\n";
 	for (int i = 0; i < size; i++)
@@ -83,6 +83,8 @@ void TestCopyAndAssignment()
     Cat copyAssignCat;
     copyAssignCat = original; // copy assignment
 
+	std::cout << std::endl;
+
     std::cout << "Original Cat idea #0: " << original.GetIdeaByIndex(0) << std::endl;
     std::cout << "Original Cat idea #1: " << original.GetIdeaByIndex(1) << std::endl;
     std::cout << "Original Cat idea #2: " << original.GetIdeaByIndex(2) << std::endl;
@@ -100,9 +102,9 @@ void TestCopyAndAssignment()
 int main()
 {
 
-	Subject();
+	// Subject();
 
-	DogIdeas();
+	// DogIdeas();
 
 	TestCopyAndAssignment();
 

@@ -9,7 +9,7 @@ Cat::Cat() : brain(new Brain())
 	this->type = "Cat";
 }
 
-Cat::Cat(const Cat &src)   : Animal(src)
+Cat::Cat(const Cat &src)   : AAnimal(src)
 {
 	std::cout << "Copy constructor of Cat called." << std::endl;
 
@@ -26,7 +26,7 @@ Cat &Cat::operator=(const Cat &src)
 		return (*this);
 
 	this->type = src.type;
-	*brain = *src.brain;
+	*brain = *src.brain; // call Copy assignment operator of Brain called
 
 	return (*this);
 }

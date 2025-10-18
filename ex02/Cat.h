@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Animal.h"
+#include "AAnimal.h"
 #include "Brain.h"
 
-class Cat : public Animal
+class Cat : public AAnimal
 {
 	Brain *brain;
 
