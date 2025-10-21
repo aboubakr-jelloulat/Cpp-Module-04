@@ -71,7 +71,7 @@ std::string const &Character::getName() const
 }
 
 /*
-
+	subject : 
 	They equip the Materias in the first empty
 		slot they find, in the following order: from slot 0 to slot 3. If they try to add a Materia to
 		a full inventory, or use/unequip a non-existent Materia, nothing should happen (but bugs

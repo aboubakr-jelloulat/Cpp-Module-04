@@ -34,6 +34,11 @@ AMateria *Ice::clone() const
 	return new Ice(*this);
 }
 
+/*
+	this	Pointer to the current object
+	*this	The current object itself (dereferenced from pointer)
+*/
+
 void Ice::use(ICharacter& target)
 {
 	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;

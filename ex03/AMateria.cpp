@@ -24,7 +24,6 @@ AMateria &AMateria::operator=(const AMateria &src)
 			So even if you assign one Materia to another, you shouldn’t change its type.
 
 	*/
-
 	return (*this);
 }
 
@@ -49,3 +48,4 @@ AMateria::AMateria(const AMateria &src)
 AMateria::~AMateria()
 {
 }
+
