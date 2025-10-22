@@ -85,13 +85,13 @@ void Character::equip(AMateria *m)
 		it prevents the same pointer from being stored twice = double free
 	*/
 
-	// for (int i = 0; i < inventory_size; i++)
-	// {
-	// 	if (_inventory[i] == m)
-	// 	{
-	// 		return;
-	// 	}
-	// }
+	for (int i = 0; i < inventory_size; i++)
+	{
+		if (_inventory[i] == m)
+		{
+			return;
+		}
+	}
 
 	for (int i = 0; i < inventory_size; i++)
 	{

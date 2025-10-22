@@ -166,43 +166,31 @@ void character()
 	me->equip(ice);
 	me->equip(ice);
 
+	AMateria *cure = new Cure();
+	me->equip(NULL);
+	me->equip(cure);
+	me->equip(cure);
+
+	me->use(0, *me); // ice
 
 
-	// MateriaSource *src = new MateriaSource();
-	// src->learnMateria(new Ice());
-
-	// Character *me = new Character("me");
-
-	// me->equip(NULL);
-
-	// AMateria *tmp;
-	// tmp = src->createMateria("ice");
-	// me->equip(tmp);
-	// me->equip(tmp);
-	// AMateria *tmp2;
-	// tmp2 = src->createMateria("ice");
-	// me->equip(tmp2);
-
-	// me->use(3, *me);
-
-	// me->use(-1, *me);
-	// me->use(4, *me);
-
+	// me->use(5, *me); // out of range
+	// me->use(-1, *me); // less
+	// me->use(0, *me); // ice
+	// me->use(1, *me); // cure
+	// me->use(3, *me); // NULL
+	
 	// me->unequip(-1);
 	// me->unequip(0);
 	// me->unequip(4);
 
-	// Character me2(*me);
-
-	// Character *me2_ptr = &me2;
-	// *me2_ptr = *me2_ptr;
-
 	// Character no_name;
-	// assert(no_name.getName() == "No name");
+	// assert(no_name.getName() == "none");
+	
 
-	//delete src;
-	delete me;
-	// delete tmp;
+	// delete me;
+	// //delete ice;
+	// // delete cure;
 }
 
 
@@ -220,8 +208,8 @@ int main()
 	character();
 
 
-	std::cout << std::endl;
-	system("leaks -q interface");
+	std::cout << "\nDone" << std::endl;
+	// system("leaks -q interface");
 
 	return 0;
 }

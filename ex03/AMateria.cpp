@@ -36,8 +36,7 @@ std::string const &AMateria::getType() const
 
 void AMateria::use(ICharacter &target)
 {
-	// Deliberately unreachable
-	(void)target;
+	std::cout << "Hej im " << target.getName() << std::endl;
 }
 
 AMateria::AMateria(const AMateria &src)
