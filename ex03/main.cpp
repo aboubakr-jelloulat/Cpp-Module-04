@@ -157,6 +157,55 @@ void materia_source()
 }
 
 
+void character()
+{
+	Character *me = new Character("me");
+	AMateria *ice = new Ice();
+
+	me->equip(NULL);
+	me->equip(ice);
+	me->equip(ice);
+
+
+
+	// MateriaSource *src = new MateriaSource();
+	// src->learnMateria(new Ice());
+
+	// Character *me = new Character("me");
+
+	// me->equip(NULL);
+
+	// AMateria *tmp;
+	// tmp = src->createMateria("ice");
+	// me->equip(tmp);
+	// me->equip(tmp);
+	// AMateria *tmp2;
+	// tmp2 = src->createMateria("ice");
+	// me->equip(tmp2);
+
+	// me->use(3, *me);
+
+	// me->use(-1, *me);
+	// me->use(4, *me);
+
+	// me->unequip(-1);
+	// me->unequip(0);
+	// me->unequip(4);
+
+	// Character me2(*me);
+
+	// Character *me2_ptr = &me2;
+	// *me2_ptr = *me2_ptr;
+
+	// Character no_name;
+	// assert(no_name.getName() == "No name");
+
+	//delete src;
+	delete me;
+	// delete tmp;
+}
+
+
 int main()
 {
 	
@@ -166,9 +215,9 @@ int main()
 
 	// ice_cure();
 
-	materia_source();
+	// materia_source();
 
-
+	character();
 
 
 	std::cout << std::endl;
