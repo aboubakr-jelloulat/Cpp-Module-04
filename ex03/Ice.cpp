@@ -17,7 +17,7 @@ Ice &Ice::operator=(const Ice &src)
 		return (*this);
 
 		/*
-			Every Cure object is always "cure"
+			Every Cure object is always "ice"
 			becasue is enforced in the constractoe
 
 		*/

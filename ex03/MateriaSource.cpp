@@ -47,7 +47,7 @@ MateriaSource::~MateriaSource()
 
 void MateriaSource::learnMateria(AMateria *materia)
 {
-	if (materia == NULL || _held_materia_count >= max_materias)
+	if (!materia || _held_materia_count >= max_materias)
 		return;
 
 	_materias[_held_materia_count] = materia;

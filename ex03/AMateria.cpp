@@ -9,6 +9,11 @@ AMateria::AMateria()
 
 AMateria::AMateria(std::string const &type) : _type(type) {}
 
+AMateria::AMateria(const AMateria &src)
+{
+	*this = src;
+}
+
 AMateria &AMateria::operator=(const AMateria &src)
 {
 	(void) src;
@@ -39,10 +44,6 @@ void AMateria::use(ICharacter &target)
 	std::cout << "Hej im " << target.getName() << std::endl;
 }
 
-AMateria::AMateria(const AMateria &src)
-{
-	*this = src;
-}
 
 AMateria::~AMateria()
 {

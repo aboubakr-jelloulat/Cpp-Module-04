@@ -20,7 +20,7 @@ Cure &Cure::operator=(const Cure &src)
 
 	/*
 		Every Cure object is always "cure"
-		becasue is enforced in the constractoe
+		becasue is enforced in the constractor
 
 	*/
 
