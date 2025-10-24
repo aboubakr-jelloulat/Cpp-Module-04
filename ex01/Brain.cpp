@@ -44,7 +44,7 @@ Brain::~Brain()
 
 void Brain::AddIdea(std::string idea)
 {
-	if (this->_idea_count == MAX)
+	if (this->_idea_count == max_idea)
 	{
 		std::cout << "Your brain is full no more space for ideas" << std::endl;
 

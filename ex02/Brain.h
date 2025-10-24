@@ -4,8 +4,8 @@
 
 class Brain
 {
-	static const int MAX= 100;
-	std::string ideas[MAX];
+	static const int max= 100;
+	std::string ideas[max];
 	int _idea_count;
 
 public:

@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/23 13:04:34 by ajelloul          #+#    #+#             */
+/*   Updated: 2025/10/24 09:33:35 by ajelloul         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "Animal.h"
 #include "Cat.h"
 #include "Dog.h"
@@ -31,6 +44,9 @@ void	TestCorrectAnimals()
 	std::cout << std::endl;
 }
 
+// resources : https://isocpp.org/wiki/faq/virtual-functions
+
+
 void	TestWrongAnimals()
 {
 	std::cout << "\n\033[33m Wrong Animal Tests \033[0m\n";
@@ -53,31 +69,12 @@ void	TestWrongAnimals()
 	std::cout << std::endl;
 }
 
-void	TestCopyAndAssignment()
-{
-	std::cout << "\n\033[35m Copy Constructor & Assignment Operator  \033[0m\n";
-
-	std::cout << "\n- Dog Copy Test -\n";
-	Dog dog1;
-	Dog dog2(dog1);
-
-	std::cout << "\n- Dog Assignment Test -\n";
-	Dog dog3;
-	dog3 = dog1;
-
-	std::cout << "\n- Des   -\n";
-}
-
 int main()
 {
 
 	TestCorrectAnimals();
 
 	TestWrongAnimals();
-
-	TestCopyAndAssignment();
-
-
 
 	std::cout << "\n\033[31m Leak Report 033[0m\n";
 	system("leaks -q Polymorphism");

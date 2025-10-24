@@ -70,14 +70,13 @@ void TestCopyAndAssignment()
     std::cout << "\n\t Copy Constructor Test ****  \n" << std::endl;
     Cat copyCtorCat(original); // copy constructor
 
+	std::cout << std::endl;
     std::cout << "Original Cat idea #0: " << original.GetIdeaByIndex(0) << std::endl;
     std::cout << "CopyCtor Cat idea #0: " << copyCtorCat.GetIdeaByIndex(0) << std::endl;
 
-    std::cout << "\n Adding a new idea to Original Cat **** " << std::endl;
-    original.AddIdea("I will work at Ericsson.");
+    std::cout << "Original Cat idea #1: " << original.GetIdeaByIndex(1) << std::endl;
+    std::cout << "CopyCtor Cat idea #1: " << copyCtorCat.GetIdeaByIndex(1) << std::endl;
 
-    std::cout << "Original Cat idea #2: " << original.GetIdeaByIndex(2) << std::endl;
-    std::cout << "CopyCtor Cat idea #2: " << copyCtorCat.GetIdeaByIndex(2) << "  walo maytba3" << std::endl;
 
     std::cout << "\n\t Copy Assignment Test ****\n" << std::endl;
     Cat copyAssignCat;
@@ -87,13 +86,15 @@ void TestCopyAndAssignment()
 
     std::cout << "Original Cat idea #0: " << original.GetIdeaByIndex(0) << std::endl;
     std::cout << "Original Cat idea #1: " << original.GetIdeaByIndex(1) << std::endl;
-    std::cout << "Original Cat idea #2: " << original.GetIdeaByIndex(2) << std::endl;
+
 
     std::cout << "\nCopyAssign Cat ideas:" << std::endl;
     std::cout << "CopyAssign Cat idea #0: " << copyAssignCat.GetIdeaByIndex(0) << std::endl;
     std::cout << "CopyAssign Cat idea #1: " << copyAssignCat.GetIdeaByIndex(1) << std::endl;
-    std::cout << "CopyAssign Cat idea #2: " << copyAssignCat.GetIdeaByIndex(2) << "  (should match original at copy time)" << std::endl;
 
+	std::cout << "\nType of original Cat : " << original.getType() << std::endl;
+   	std::cout << "Type of CopyAssign Cat : " << copyAssignCat.getType() << std::endl;
+    
     std::cout << "\n\tDestructors will be called ****\n" << std::endl;
 }
 
@@ -102,15 +103,15 @@ void TestCopyAndAssignment()
 int main()
 {
 
-	// Subject();
+	Subject();
 
-	// DogIdeas();
+	DogIdeas();
 
 	TestCopyAndAssignment();
 
 
 	std::cout << "\n\033[31m Leak Report 033[0m\n";
-	system("leaks -q fire");
+	system("leaks -q abstract"); 
 
 	return (0);
 }

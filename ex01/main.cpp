@@ -25,6 +25,7 @@ void	Subject()
 	for (int i = 0; i < size; i++)
 	{
 		delete animals[i];
+		animals[i] = NULL;
 
 		std::cout << std::endl;
 	}
@@ -73,11 +74,9 @@ void TestCopyAndAssignment()
     std::cout << "Original Cat idea #0: " << original.GetIdeaByIndex(0) << std::endl;
     std::cout << "CopyCtor Cat idea #0: " << copyCtorCat.GetIdeaByIndex(0) << std::endl;
 
-    std::cout << "\n Adding a new idea to Original Cat **** " << std::endl;
-    original.AddIdea("I will work at Ericsson.");
+    std::cout << "Original Cat idea #1: " << original.GetIdeaByIndex(1) << std::endl;
+    std::cout << "CopyCtor Cat idea #1: " << copyCtorCat.GetIdeaByIndex(1) << std::endl;
 
-    std::cout << "Original Cat idea #2: " << original.GetIdeaByIndex(2) << std::endl;
-    std::cout << "CopyCtor Cat idea #2: " << copyCtorCat.GetIdeaByIndex(2) << "  walo maytba3" << std::endl;
 
     std::cout << "\n\t Copy Assignment Test ****\n" << std::endl;
     Cat copyAssignCat;
@@ -85,14 +84,16 @@ void TestCopyAndAssignment()
 
     std::cout << "Original Cat idea #0: " << original.GetIdeaByIndex(0) << std::endl;
     std::cout << "Original Cat idea #1: " << original.GetIdeaByIndex(1) << std::endl;
-    std::cout << "Original Cat idea #2: " << original.GetIdeaByIndex(2) << std::endl;
+  
 
-    std::cout << "\nCopyAssign Cat ideas:" << std::endl;
+
     std::cout << "CopyAssign Cat idea #0: " << copyAssignCat.GetIdeaByIndex(0) << std::endl;
     std::cout << "CopyAssign Cat idea #1: " << copyAssignCat.GetIdeaByIndex(1) << std::endl;
-    std::cout << "CopyAssign Cat idea #2: " << copyAssignCat.GetIdeaByIndex(2) << "  (should match original at copy time)" << std::endl;
 
-    std::cout << "\n\tDestructors will be called ****\n" << std::endl;
+   	std::cout << "Type of original Cat : " << original.getType() << std::endl;
+   	std::cout << "Type of CopyAssign Cat : " << copyAssignCat.getType() << std::endl;
+
+	std::cout << "\n\tDestructors will be called ****\n" << std::endl;
 }
 
 

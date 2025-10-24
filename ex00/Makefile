@@ -1,21 +1,25 @@
-NAME    := Polymorphism
-CC      := c++
-CFLAGS  := -Wall -Wextra -Werror -std=c++98
+NAME = Polymorphism
 
-SRCDIR := .
-OBJDIR := build
-SRCS := $(wildcard $(SRCDIR)/*.cpp)
-OBJS := $(SRCS:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
+CXX = c++
+
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+
+OBJDIR = build
+
+SRC = Animal.cpp  Cat.cpp   Dog.cpp  WrongAnimal.cpp WrongCat.cpp   main.cpp
+
+OBJ = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+$(NAME): $(OBJ)
+	$(CXX) $(CXXFLAGS) $^ -o $@
 	@echo  "\nCreated executable '$(NAME)'"
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.cpp Makefile *h | $(OBJDIR)
-	$(CC) $(CFLAGS) -c $< -o $@
 
+$(OBJDIR)/%.o: %.cpp Makefile *h | $(OBJDIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+	
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)
 

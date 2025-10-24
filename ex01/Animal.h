@@ -10,8 +10,8 @@ protected:
 public :
 	Animal();
 	Animal(const Animal &src);
-	virtual ~Animal();
 	Animal &operator=(const Animal &src);
+	virtual ~Animal();
 
 	const std::string &getType() const;
 
