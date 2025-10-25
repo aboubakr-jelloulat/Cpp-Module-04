@@ -1,14 +1,24 @@
 #pragma once
 
-/*
-	#pragma once
-		tells the compiler to include this header only once per translation unit
-*/
 
 
 // #include "ICharacter.h"
 #include <iostream>
 #include <string>
+#include "ICharacter.h"
+
+
+/*
+	circular dependency : AMateria -> ICharacter -> AMateria
+
+		then when the compiler starts including files, it goes into an infinite include loop
+
+	The solution: forward declaration
+
+		There is a class named X, but I don’t need to know all its details right now
+
+	
+*/
 
 class ICharacter;
 

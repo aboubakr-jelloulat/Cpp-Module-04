@@ -4,7 +4,7 @@
 
 AMateria::AMateria()
 {
-	// Deliberately unreachable
+
 }
 
 AMateria::AMateria(std::string const &type) : _type(type) {}
@@ -23,8 +23,6 @@ AMateria &AMateria::operator=(const AMateria &src)
 		While assigning a Materia to another, copying the type doesn’t make sense.
 
 		That means:
-
-			Each AMateria instance has a fixed _type that represents its identity (like "ice").
 
 			So even if you assign one Materia to another, you shouldn’t change its type.
 

@@ -41,7 +41,10 @@ Character &Character::operator=(const Character &src)
 		_inventory[i] = NULL;
 	}
 
-	// Copy  _inventory's src
+	/*
+		subject :
+			Any copy (using copy constructor or copy assignment operator) of a Character must be deep.
+	*/
 	for (int i = 0; i < inventory_size; i++)
 	{
 		if (src._inventory[i] != NULL)
@@ -86,12 +89,9 @@ void Character::equip(AMateria *m)
 	*/
 
 	for (int i = 0; i < inventory_size; i++)
-	{
 		if (_inventory[i] == m)
-		{
 			return;
-		}
-	}
+	
 
 	for (int i = 0; i < inventory_size; i++)
 	{

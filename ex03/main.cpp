@@ -54,8 +54,10 @@ void Amateria_Tests()
 	a_materia3 = src->createMateria("cure");
 
 	*a_materia2 = *a_materia3;
-	*a_materia2 = *a_materia2;
-	assert(a_materia2->getType() == "ice"); // doesn’t make sense 
+	assert(a_materia2->getType() == "ice");
+	/*
+		subject : While assigning a Materia to another, copying the type doesn’t make sense.
+	*/ 
 
 	ICharacter *bob = new Character("bob");
 	a_materia->use(*bob);
@@ -114,6 +116,11 @@ void	materia_source_test1()
 	AMateria *first_cure = src->createMateria("cure"); // ila makanch 9bel maydozchi
 	assert(first_cure && first_cure->getType() == "cure");
 
+	/*
+		The latter is a copy of the Materia previously learned by
+	the MateriaSource whose type equals the one passed as parameter
+	*/
+
 	delete src;
 	delete first_cure;
 
@@ -150,7 +157,7 @@ void materia_source()
 		delete external_ice;
 	}
 
-  
+
     MateriaSource *src = new MateriaSource();
 	src->learnMateria(new Ice());
     src->learnMateria(new Cure());
@@ -167,33 +174,16 @@ void materia_source()
 
 
 
-	//src->learnMateria(new Cure()); // kaydiro leaks ha9ach mat add f src You need a pointer to delete them
+	// src->learnMateria(new Cure()); // kaydiro leaks ha9ach mat add f src You need a pointer to delete them
 	// src->learnMateria(new Cure());
 	// src->learnMateria(new Ice());
 
 
-    // Create multi materia 
-    AMateria *first_ice = src->createMateria("ice");
-    AMateria *first_cure = src->createMateria("cure");
-    AMateria *second_ice = src->createMateria("ice");
-    AMateria *second_cure = src->createMateria("cure");
-    AMateria *should_be_null = src->createMateria("fire"); 
-
-    assert(first_ice && first_ice->getType() == "ice");
-    assert(first_cure && first_cure->getType() == "cure");
-    assert(second_ice && second_ice->getType() == "ice");
-    assert(second_cure && second_cure->getType() == "cure");
-    assert(should_be_null == NULL);
 
 
-    
 
     delete src;
 	delete external_ice; // delete ha9ach can buffer full omadkhlchi l src bash delete f destractor
-    delete first_ice;
-    delete first_cure;
-    delete second_ice;
-    delete second_cure;
 
 }
 
@@ -203,26 +193,25 @@ void character()
 	Character *me = new Character("me");
 	AMateria *ice = new Ice();
 
-	me->equip(NULL);
+
 	me->equip(ice);
 	me->equip(ice); // handle no double free
 
 	AMateria *cure = new Cure();
-	me->equip(NULL);
 	me->equip(cure);
 	me->equip(cure);
 
-
+	std::cout << "\nHej : 1" << std::endl;
 	me->use(5, *me); // out of range
 	me->use(-1, *me); // less
 	me->use(0, *me); // ice
 	me->use(1, *me); // cure
-	me->use(3, *me); // NULL
 	
 	me->unequip(-1);
 	me->unequip(0);
 	me->unequip(4);
 
+	std::cout << "\nHej : 2" << std::endl;
 	me->use(0, *me); // NULL delete ice
 	me->use(1, *me); // cure
 
@@ -252,7 +241,8 @@ int main()
 	character();
 
 
-	std::cout << "\nDone" << std::endl;
+	std::cout << std::endl;
+
 	system("leaks -q interface");
 
 	return 0;

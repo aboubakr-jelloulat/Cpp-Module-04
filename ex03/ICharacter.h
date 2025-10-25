@@ -1,7 +1,9 @@
 #pragma once
 
-// #include "AMateria.h" // mochkilla
+#include "AMateria.h"
 #include <string>
+
+// circular dependency
 
 class AMateria;
 
