@@ -16,10 +16,11 @@ static void SubjectTestes()
 	src->learnMateria(new Cure());
 
 	ICharacter* me = new Character("me");
+
 	AMateria* tmp;
 	tmp = src->createMateria("ice");
-
 	me->equip(tmp);
+
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
 
@@ -74,169 +75,38 @@ void Amateria_Tests()
 }
 
 
-void ice_cure()
-{
-    std::cout << std::endl << "*** ICE & Cure ***" << std::endl;
+void character() {
+    Character *me = new Character("me");
+    AMateria *ice = new Ice();
+    AMateria *cure = new Cure();
 
-    MateriaSource *src = new MateriaSource();
-    src->learnMateria(new Ice());
-    src->learnMateria(new Cure());
+    me->equip(ice);
+    me->equip(ice); // handle no double equip
+    
+    me->equip(cure);
+    me->equip(cure);
+    
+    me->use(0, *me); // ice
+    me->use(1, *me); // cure
+    
+    me->unequip(0); 
+    me->unequip(1);  
+    
+    me->use(0, *me);
+    me->use(1, *me); 
 
-    AMateria *ice = src->createMateria("ice");
-    assert(ice->getType() == "ice");
-
-    AMateria *cure = src->createMateria("cure");
-    assert(cure->getType() == "cure");
-
-
-
-    delete src;
-    delete ice;
-    delete cure;
-}
-
-
-void	materia_source_test1()
-{
-
-	std::cout << std::endl << "**** MATERIA_SOURCE TEST 1  ****" << std::endl;
-
-    MateriaSource *src = new MateriaSource();
-    src->learnMateria(new Ice());
-    src->learnMateria(new Ice());
-
-    src->learnMateria(new Cure());
-   	src->learnMateria(new Ice());
-
-	/*
-		subject :
-			The latter is a copy of the Materia previously learned by
-				the MateriaSource whose type equals the one passed as parameter.
-	*/
-	AMateria *first_cure = src->createMateria("cure"); // ila makanch 9bel maydozchi
-	assert(first_cure && first_cure->getType() == "cure");
-
-	/*
-		The latter is a copy of the Materia previously learned by
-	the MateriaSource whose type equals the one passed as parameter
-	*/
-
-	delete src;
-	delete first_cure;
-
-	
-}
-
-
-void materia_source()
-{
-    std::cout << std::endl << "**** MATERIA_SOURCE  ****" << std::endl;
-
-	{
-		MateriaSource *src = new MateriaSource();
-		src->learnMateria(new Ice());
-		src->learnMateria(new Ice());
-
-		src->learnMateria(new Cure());
-		src->learnMateria(new Ice());
-
-		AMateria *external_ice = new Ice();
-		src->learnMateria(external_ice); // Should not be added source full
-
-		src->learnMateria(NULL); // Should be ignored
-
-		// Try creating a non existent materia type
-
-		/*
-			subject : . Returns 0 if the type is unknown.
-		*/
-		AMateria *unknown_materia = src->createMateria("fire");
-		assert(unknown_materia == NULL);
-
-		delete src;
-		delete external_ice;
-	}
-
-
-    MateriaSource *src = new MateriaSource();
-	src->learnMateria(new Ice());
-    src->learnMateria(new Cure());
-	/*
-		subject : In a nutshell, your MateriaSource must be able to learn "templates" of Materias to
-			create them when needed.
-	*/
-	AMateria *ice = new Ice();
-	src->learnMateria(ice);
-    src->learnMateria(new Cure());
-
-	AMateria *external_ice = new Ice();
-	src->learnMateria(external_ice); 
-
-
-
-	// src->learnMateria(new Cure()); // kaydiro leaks ha9ach mat add f src You need a pointer to delete them
-	// src->learnMateria(new Cure());
-	// src->learnMateria(new Ice());
-
-
-
-
-
-    delete src;
-	delete external_ice; // delete ha9ach can buffer full omadkhlchi l src bash delete f destractor
-
-}
-
-
-void character()
-{
-	Character *me = new Character("me");
-	AMateria *ice = new Ice();
-
-
-	me->equip(ice);
-	me->equip(ice); // handle no double free
-
-	AMateria *cure = new Cure();
-	me->equip(cure);
-	me->equip(cure);
-
-	std::cout << "\nHej : 1" << std::endl;
-	me->use(5, *me); // out of range
-	me->use(-1, *me); // less
-	me->use(0, *me); // ice
-	me->use(1, *me); // cure
-	
-	me->unequip(-1);
-	me->unequip(0);
-	me->unequip(4);
-
-	std::cout << "\nHej : 2" << std::endl;
-	me->use(0, *me); // NULL delete ice
-	me->use(1, *me); // cure
-
-	Character none;
-	assert(none.getName() == "none");
-	
-
-	delete me;
-	delete ice; // only affect NULL no delete , you need to delete it manual 
-	// delete cure; // destructor runs and already deletes the ice and cure
+    delete me;  // This will delete all unequipped materias via _ClearList()
 }
 
 
 int main()
 {
 	
+	
 	SubjectTestes();
 
 	Amateria_Tests();
 
-	ice_cure();
-
-	materia_source_test1();
-
-	materia_source();
 
 	character();
 
@@ -247,3 +117,7 @@ int main()
 
 	return 0;
 }
+
+
+
+

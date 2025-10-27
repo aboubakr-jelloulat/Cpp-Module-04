@@ -12,7 +12,7 @@ Dog::Dog() : brain(new Brain())
 	you must explicitly chain it in the Dog copy constructo
 */
 
-Dog::Dog(const Dog &src)  : AAnimal(src)
+Dog::Dog(const Dog &src)
 {
 	std::cout << "Copy constructor of Dog called." << std::endl;
 

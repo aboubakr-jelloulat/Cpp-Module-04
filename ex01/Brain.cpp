@@ -59,10 +59,7 @@ void Brain::AddIdea(std::string idea)
 
 std::string &Brain::GetIdeaByIndex(int index)
 {
-	/*
-		static means this variable is created once and lives for the entire program lifetime
-			not just inside the function call
-	*/
+	
 	static std::string NotFound = "404 Not Found";
 
     if (index < 0 || index >= 100)

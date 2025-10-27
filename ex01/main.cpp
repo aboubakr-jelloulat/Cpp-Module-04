@@ -12,7 +12,7 @@ void	Subject()
 
 	Animal *animals[size];
 
-	std::cout << "\n\033[36m  create and fill an array of Animal objects  \033[0m\n";
+	std::cout << " create and fill an array of Animal objects  \n";
 	for (int i = 0; i < size; i++)
 	{
 		(i % 2 == 0) ? animals[i] = new Dog() : animals[i] = new Cat();
@@ -21,7 +21,7 @@ void	Subject()
 	}
 
 
-	std::cout << "\n\033[36m  \ndelete every Animal  \033[0m\n";
+	std::cout << "\n \ndelete every Animal  \n";
 	for (int i = 0; i < size; i++)
 	{
 		delete animals[i];
@@ -62,38 +62,22 @@ void TestCopyAndAssignment()
     std::cout << "\n\t Original Cat \n" << std::endl;
 
     Cat original;
-    original.AddIdea("I will go to Sweden.");
-    original.AddIdea("I will go to Norway.");
+    original.AddIdea("I will go to Sweden");
+    original.AddIdea("I will go to Norway");
 
-    std::cout << "Original Cat idea #0: " << original.GetIdeaByIndex(0) << std::endl;
-    std::cout << "Original Cat idea #1: " << original.GetIdeaByIndex(1) << std::endl;
+    Cat copy(original); // copy constructor
 
-    std::cout << "\n\t Copy Constructor Test ****  \n" << std::endl;
-    Cat copyCtorCat(original); // copy constructor
-
-    std::cout << "Original Cat idea #0: " << original.GetIdeaByIndex(0) << std::endl;
-    std::cout << "CopyCtor Cat idea #0: " << copyCtorCat.GetIdeaByIndex(0) << std::endl;
-
-    std::cout << "Original Cat idea #1: " << original.GetIdeaByIndex(1) << std::endl;
-    std::cout << "CopyCtor Cat idea #1: " << copyCtorCat.GetIdeaByIndex(1) << std::endl;
+    std::cout << "Copy #0: " << copy.GetIdeaByIndex(0) << std::endl;
+    std::cout << "Copy #1: " << copy.GetIdeaByIndex(1) << std::endl;
 
 
-    std::cout << "\n\t Copy Assignment Test ****\n" << std::endl;
-    Cat copyAssignCat;
-    copyAssignCat = original; // copy assignment
-
-    std::cout << "Original Cat idea #0: " << original.GetIdeaByIndex(0) << std::endl;
-    std::cout << "Original Cat idea #1: " << original.GetIdeaByIndex(1) << std::endl;
-  
+    Cat Assgin;
+    Assgin = original; // copy assignment
 
 
-    std::cout << "CopyAssign Cat idea #0: " << copyAssignCat.GetIdeaByIndex(0) << std::endl;
-    std::cout << "CopyAssign Cat idea #1: " << copyAssignCat.GetIdeaByIndex(1) << std::endl;
+    std::cout << "Assign #0: " << Assgin.GetIdeaByIndex(0) << std::endl;
+    std::cout << "Assign  #1: " << Assgin.GetIdeaByIndex(1) << std::endl;
 
-   	std::cout << "Type of original Cat : " << original.getType() << std::endl;
-   	std::cout << "Type of CopyAssign Cat : " << copyAssignCat.getType() << std::endl;
-
-	std::cout << "\n\tDestructors will be called ****\n" << std::endl;
 }
 
 
@@ -108,7 +92,7 @@ int main()
 	TestCopyAndAssignment();
 
 
-	std::cout << "\n\033[31m Leak Report 033[0m\n";
+	std::cout << std::endl;
 	system("leaks -q fire");
 
 	return (0);

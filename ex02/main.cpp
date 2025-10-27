@@ -12,7 +12,7 @@ void	Subject()
 
 	AAnimal *animals[size];
 
-	std::cout << "\n\033[36m  create and fill an array of Animal objects  \033[0m\n";
+	std::cout << "\n  create and fill an array of Animal objects  \n";
 	for (int i = 0; i < size; i++)
 	{
 		(i % 2 == 0) ? animals[i] = new Dog() : animals[i] = new Cat();
@@ -21,7 +21,7 @@ void	Subject()
 	}
 
 
-	std::cout << "\n\033[36m  \ndelete every Animal  \033[0m\n";
+	std::cout << "\n  delete every Animal  \n";
 	for (int i = 0; i < size; i++)
 	{
 		delete animals[i];
@@ -33,10 +33,6 @@ void	Subject()
 
 void	DogIdeas()
 {	
-	/*
-		You declared the pointer as const Dog* dog, meaning:
-			You promise not to modify the Dog object through this pointer.
-	*/
 
 	Dog* d = new Dog();
 
@@ -56,49 +52,21 @@ void	DogIdeas()
 	delete d;
 
 }
-void TestCopyAndAssignment()
+
+void	TestCpAndAssign()
 {
-    std::cout << "\n\t Original Cat \n" << std::endl;
+	Dog* d = new Dog();
 
-    Cat original;
-    original.AddIdea("I will go to Sweden.");
-    original.AddIdea("I will go to Norway.");
+	d->AddIdea("hej");
+	d->AddIdea("hello");
 
-    std::cout << "Original Cat idea #0: " << original.GetIdeaByIndex(0) << std::endl;
-    std::cout << "Original Cat idea #1: " << original.GetIdeaByIndex(1) << std::endl;
+	Dog cp(*d);
+	std::cout << cp.GetIdeaByIndex(0) << std::endl;
+	std::cout << cp.GetIdeaByIndex(1) << std::endl;
 
-    std::cout << "\n\t Copy Constructor Test ****  \n" << std::endl;
-    Cat copyCtorCat(original); // copy constructor
+	delete d;
 
-	std::cout << std::endl;
-    std::cout << "Original Cat idea #0: " << original.GetIdeaByIndex(0) << std::endl;
-    std::cout << "CopyCtor Cat idea #0: " << copyCtorCat.GetIdeaByIndex(0) << std::endl;
-
-    std::cout << "Original Cat idea #1: " << original.GetIdeaByIndex(1) << std::endl;
-    std::cout << "CopyCtor Cat idea #1: " << copyCtorCat.GetIdeaByIndex(1) << std::endl;
-
-
-    std::cout << "\n\t Copy Assignment Test ****\n" << std::endl;
-    Cat copyAssignCat;
-    copyAssignCat = original; // copy assignment
-
-	std::cout << std::endl;
-
-    std::cout << "Original Cat idea #0: " << original.GetIdeaByIndex(0) << std::endl;
-    std::cout << "Original Cat idea #1: " << original.GetIdeaByIndex(1) << std::endl;
-
-
-    std::cout << "\nCopyAssign Cat ideas:" << std::endl;
-    std::cout << "CopyAssign Cat idea #0: " << copyAssignCat.GetIdeaByIndex(0) << std::endl;
-    std::cout << "CopyAssign Cat idea #1: " << copyAssignCat.GetIdeaByIndex(1) << std::endl;
-
-	std::cout << "\nType of original Cat : " << original.getType() << std::endl;
-   	std::cout << "Type of CopyAssign Cat : " << copyAssignCat.getType() << std::endl;
-    
-    std::cout << "\n\tDestructors will be called ****\n" << std::endl;
 }
-
-
 
 int main()
 {
@@ -107,10 +75,11 @@ int main()
 
 	DogIdeas();
 
-	TestCopyAndAssignment();
+	
+	TestCpAndAssign();
 
 
-	std::cout << "\n\033[31m Leak Report 033[0m\n";
+	std::cout << "\n";
 	system("leaks -q abstract"); 
 
 	return (0);

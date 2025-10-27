@@ -9,7 +9,7 @@ Cat::Cat() : brain(new Brain())
 	this->type = "Cat";
 }
 
-Cat::Cat(const Cat &src)   : AAnimal(src)
+Cat::Cat(const Cat &src)
 {
 	std::cout << "Copy constructor of Cat called." << std::endl;
 

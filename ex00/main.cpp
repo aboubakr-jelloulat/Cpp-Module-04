@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ajelloul <ajelloul@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 13:04:34 by ajelloul          #+#    #+#             */
-/*   Updated: 2025/10/24 09:33:35 by ajelloul         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 
 #include "Animal.h"
 #include "Cat.h"
@@ -21,7 +9,7 @@
 
 void	TestCorrectAnimals()
 {
-	std::cout << "\n\033[36m  Correct Animal Tests \033[0m\n";
+	std::cout << "\n Correct Animal Tests \n";
 
 	const Animal* baseAnimal = new Animal();
 	const Animal* dog = new Dog();
@@ -49,7 +37,7 @@ void	TestCorrectAnimals()
 
 void	TestWrongAnimals()
 {
-	std::cout << "\n\033[33m Wrong Animal Tests \033[0m\n";
+	std::cout << "\n Wrong Animal Tests \n";
 
 	const WrongAnimal* baseWrong = new WrongAnimal();
 	const WrongAnimal* wrongCat = new WrongCat();
@@ -76,7 +64,7 @@ int main()
 
 	TestWrongAnimals();
 
-	std::cout << "\n\033[31m Leak Report 033[0m\n";
+	std::cout << std::endl;
 	system("leaks -q Polymorphism");
 
 	return 0;

@@ -7,12 +7,9 @@ Dog::Dog() : brain(new Brain())
 	std::cout << "Default constructor of Dog called." << std::endl;
 	this->type = "Dog";
 }
-/*
-	If you want to call the Animal copy constructor (not its default constructor)
-	you must explicitly chain it in the Dog copy constructo
-*/
 
-Dog::Dog(const Dog &src)  : Animal(src)
+
+Dog::Dog(const Dog &src)
 {
 	std::cout << "Copy constructor of Dog called." << std::endl;
 

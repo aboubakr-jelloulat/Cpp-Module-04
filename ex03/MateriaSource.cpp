@@ -27,8 +27,10 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &src)
 
 	for (int i = 0; i < _materia_count; i++)
 	{
-		if (!src._materias[i])
-			_materias[i] = src._materias[i]->clone();
+		if (src._materias[i])
+        	_materias[i] = src._materias[i]->clone();
+    	else
+        	_materias[i] = NULL;
 	}
 
 	return (*this);
